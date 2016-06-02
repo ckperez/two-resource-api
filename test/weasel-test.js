@@ -3,14 +3,14 @@
 const chai = require('chai');
 const chaiHTTP = require('chai-http');
 const Weasel = require('../schema/weasel');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 chai.use(chaiHTTP);
 
 const expect = chai.expect;
 const request = chai.request;
-const dbPort = process.env.MONGOLAB_URI
+const dbPort = process.env.MONGOLAB_URI;
 
-process.env.MONGOLAB_URI = 'mongodb://localhost/test_db'
+process.env.MONGOLAB_URI = 'mongodb://localhost/test_db';
 require('../lib/server');
 
 describe('Weasel tests', ()=>{
@@ -18,8 +18,8 @@ describe('Weasel tests', ()=>{
     process.env.MONGOLAB_URI = dbPort;
     mongoose.connection.db.dropDatabase(()=>{
       done();
-    })
-  })
+    });
+  });
   it('should get a list of weasels', (done)=>{
     request('localhost:2222')
       .get('/weasels')
@@ -77,7 +77,7 @@ describe('Weasel tests', ()=>{
           expect(res).to.have.status(200);
           expect(res.body.message).to.eql('Deletion successful');
           done();
-        })
-    })
+        });
+    });
   });
 });
