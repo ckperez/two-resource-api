@@ -55,18 +55,18 @@ describe('Weasel tests', ()=>{
         done();
       });
     });
-    // it('should update a weasel', (done)=>{
-    //   testWeasel.name = 'Carl';
-    //   request('localhost:2222')
-    //     .put('/weasels/')
-    //     .send(testWeasel)
-    //     .end((err, res)=>{
-    //       expect(err).to.eql(null);
-    //       expect(res).to.have.status(200);
-    //       expect(res.body.message).to.eql('Update successful');
-    //       done();
-    //     });
-    // });
+    it('should update a weasel', (done)=>{
+      testWeasel.name = 'Carl';
+      request('localhost:2222')
+        .put('/weasels/')
+        .send(testWeasel)
+        .end((err, res)=>{
+          expect(err).to.eql(null);
+          expect(res).to.have.status(200);
+          expect(res.body.message).to.eql('Update successful');
+          done();
+        });
+    });
 
     it('should destroy a weasel', (done)=>{
       testWeasel.name = 'Carl';
